@@ -18,25 +18,23 @@ public class starting : MonoBehaviour
 	void Start ()
 	{
 		args = System.Environment.GetCommandLineArgs();
-        Debug.Log(args[2]);
 	}
 	
     // Displayed the selected argument for debug purpose
 	void OnGUI()
 	{
-        /*
-        for(int i = 0; i < args.Length; i++)
-		    GUILayout.Label(args[i]);
-        */
-        GUILayout.Label(args[3]);
-        GUILayout.Label(args[6]);
 
 	}
 
     // check if the argument input match the hard-coded credentials
     void Update()
     {
-        if (args[3] != username || args[6] != password)
+        if (args.Length != 3)
+        {
+            Application.Quit();
+        }
+
+        if (args[1] != username || args[2] != password)
         {
             Application.Quit();
         }
